@@ -4,7 +4,12 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
-      //  jcenter() // Warning: this repository is going to shut down soon
+        maven {
+                url 'https://oss.sonatype.org/content/repositories/snapshots'
+                name 'ossrh-snapshot'
+        }
+        jcenter() // Warning: this repository is going to shut down soon
     }
 }
-include ':app', ':openCVLibrary341'
+rootProject.name = "Capstoneresult"
+include ':app' , ':openCVLibrary341'
