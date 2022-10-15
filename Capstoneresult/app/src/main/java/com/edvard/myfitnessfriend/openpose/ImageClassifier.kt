@@ -19,7 +19,6 @@ import android.app.Activity
 import android.graphics.Bitmap
 import android.os.SystemClock
 import android.util.Log
-import com.edvard.myfitnessfriend.AppStat
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.gpu.GpuDelegate
 import java.io.FileInputStream
@@ -79,7 +78,7 @@ internal constructor(
   }
 
   /** Classifies a frame from the preview stream.  */
-  public fun classifyFrame(bitmap: Bitmap): String {
+  public fun classifyFrame(bitmap: Bitmap?): String {
     if (tflite == null) {
       Log.e(TAG, "Image classifier has not been initialized; Skipped.")
       return "Uninitialized Classifier."
@@ -91,7 +90,7 @@ internal constructor(
     val endTime = SystemClock.uptimeMillis()
     Log.d(TAG, "Timecost to run model inference: " + Long.toString(endTime - startTime))
 
-    bitmap.recycle()
+    bitmap!!.recycle()
     // Print the results.
     //    String textToShow = printTopKLabels();
     return Long.toString(endTime - startTime) + "ms"
@@ -116,12 +115,12 @@ internal constructor(
   }
 
   /** Writes Image data into a `ByteBuffer`.  */
-  private fun convertBitmapToByteBuffer(bitmap: Bitmap) {
+  private fun convertBitmapToByteBuffer(bitmap: Bitmap?) {
     if (imgData == null) {
       return
     }
     imgData!!.rewind()
-    bitmap.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
+    bitmap?.getPixels(intValues, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
     // Convert the image to floating point.
     var pixel = 0
     val startTime = SystemClock.uptimeMillis()

@@ -1,7 +1,7 @@
 package com.edvard.myfitnessfriend
 
 import android.graphics.Color
-import com.github.mikephil.charting.charts.BarLineChartBase
+//import com.github.mikephil.charting.charts.BarLineChartBase
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
@@ -44,24 +44,24 @@ class Chart {
             yAxis.apply{
                 axisMinimum = 0f
             }
-            var set= LineDataSet(chartData, yAxisName)
+            val set = LineDataSet(chartData, yAxisName) //var -> val
             set.apply{
                 axisDependency = YAxis.AxisDependency.LEFT
                 mode = LineDataSet.Mode.STEPPED
                 setDrawFilled(true)
             }
-            var dataSets = ArrayList<ILineDataSet>()
+            val dataSets = ArrayList<ILineDataSet>() //var -> val
             dataSets.add(set)
 
-            var data = LineData(dataSets)
-            set.setColor(Color.BLACK)
+            val data = LineData(dataSets) //var -> val
+            set.color = Color.BLACK // set.setColor(Color.BLACK)
             set.setCircleColor(Color.GREEN)
 
-            chart.setData(data)
+            chart.data = data
         }
         class DayAxisValueFormatter(private val chart: LineChart) : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                var ret:String = ""
+                var ret = "" // var ret:String = ""
                 when(value){
                     1f -> ret = "월"
                     2f -> ret = "화"

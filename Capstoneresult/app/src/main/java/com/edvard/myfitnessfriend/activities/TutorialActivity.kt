@@ -10,7 +10,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+// import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.RequestQueue
 import com.edvard.myfitnessfriend.AppStat
@@ -19,10 +19,11 @@ import com.edvard.myfitnessfriend.Posestimation
 import com.edvard.myfitnessfriend.openpose.CameraActivity
 import com.edvard.myfitnessfriend.R
 import kotlinx.android.synthetic.main.activity_tutorial.*
-import java.text.SimpleDateFormat
+// import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
+@Suppress("DEPRECATION")
 class TutorialActivity : AppCompatActivity(){
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,7 +103,7 @@ class TutorialActivity : AppCompatActivity(){
             "standingCrunch" ->  videoLink = "nSzcY0NaXLM"
             "plank" -> videoLink = "Zq8nRY9P_cM"
         }
-        tutorialVideo.play(videoLink)
+        // tutorialVideo.play(videoLink)
 
         startButton.setOnClickListener {
             val myIntent = Intent(this, CameraActivity::class.java)

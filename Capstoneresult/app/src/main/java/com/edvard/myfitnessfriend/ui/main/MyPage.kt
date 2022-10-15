@@ -1,5 +1,6 @@
 package com.edvard.myfitnessfriend.ui.main
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -23,10 +24,12 @@ import org.json.JSONObject
 
 class MyPage : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.fragment_my_page, container, false)
-        return root
+        return inflater.inflate(R.layout.fragment_my_page, container, false)
+       // val root = inflater.inflate(R.layout.fragment_my_page, container, false)
+       // return root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(AppStat.myStat.getIsLogin()){
@@ -34,7 +37,7 @@ class MyPage : Fragment() {
             loginButton.text = AppStat.myStat.getUserId()
             logoutButton.visibility = View.VISIBLE
             logoutButton.isEnabled = true
-            val mRvAdapter = RvAdapter(context!!, AppStat.friendList)
+            val mRvAdapter = RvAdapter(requireContext(), AppStat.friendList)
             friendList.adapter = mRvAdapter
 
             val hour = AppStat.myStat.gettotalTime().toInt()/3600

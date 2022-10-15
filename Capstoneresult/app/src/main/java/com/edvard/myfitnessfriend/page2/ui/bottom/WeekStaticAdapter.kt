@@ -3,10 +3,10 @@ package com.edvard.myfitnessfriend.page2.ui.bottom
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.edvard.myfitnessfriend.page2.ui.bottom.WeekCal
-import com.edvard.myfitnessfriend.page2.ui.bottom.WeekExercise
+//import com.edvard.myfitnessfriend.page2.ui.bottom.WeekCal
+//import com.edvard.myfitnessfriend.page2.ui.bottom.WeekExercise
 
-class WeekStaticAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
+class WeekStaticAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
 
     private val items = ArrayList<Fragment>()
     init{

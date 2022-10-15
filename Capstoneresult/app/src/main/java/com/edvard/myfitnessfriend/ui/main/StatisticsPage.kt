@@ -26,10 +26,10 @@ class StatisticsPage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewPager.adapter = StatisticsAdapter(activity!!.supportFragmentManager)
+        viewPager.adapter = StatisticsAdapter(requireActivity().supportFragmentManager)
         viewPager.currentItem = 0
 
-        bottomViewPager.adapter = WeekStaticAdapter(activity!!.supportFragmentManager)
+        bottomViewPager.adapter = WeekStaticAdapter(requireActivity().supportFragmentManager)
         bottomViewPager.currentItem = 0
 
 

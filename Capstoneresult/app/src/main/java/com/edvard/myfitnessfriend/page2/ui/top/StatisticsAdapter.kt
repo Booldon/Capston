@@ -7,7 +7,7 @@ import com.edvard.myfitnessfriend.page2.ui.top.Month
 import com.edvard.myfitnessfriend.page2.ui.top.Today
 import com.edvard.myfitnessfriend.page2.ui.top.Weeks
 
-class StatisticsAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm){
+class StatisticsAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
 
     private val items = ArrayList<Fragment>()
     init{

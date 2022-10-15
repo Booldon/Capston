@@ -15,10 +15,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         btn_register.setOnClickListener(View.OnClickListener {
             val data = HashMap<String, Any>()
-            data["userID"] = et_id.getText().toString()
-            data["userPassword"] = et_pass.getText().toString()
-            data["userName"] = et_name.getText().toString()
-            data["userWeight"] = et_age.getText().toString().toFloat()
+            data["userID"] = et_id.text.toString() //getText() -> text
+            data["userPassword"] = et_pass.text.toString() //getText() -> text
+            data["userName"] = et_name.text.toString() //getText() -> text
+            data["userWeight"] = et_age.text.toString().toFloat() //getText() -> text
             val queue = DB.makeNewRequestQueue(this)
             DB.registerRequest(this, queue, data)
 

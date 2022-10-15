@@ -47,7 +47,6 @@ import androidx.core.content.ContextCompat
 import android.util.Log
 import android.util.Size
 import android.view.*
-import android.widget.Button
 //import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -60,7 +59,6 @@ import java.util.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
 import kotlin.collections.HashMap
-import kotlin.math.min
 
 /**
  * Basic fragments for the Camera.
@@ -746,9 +744,9 @@ class Camera2BasicFragment : Fragment(),ActivityCompat.OnRequestPermissionsResul
         showToast("Uninitialized Classifier or invalid context.")
         return
       }
-      val bitmap = textureView!!.getBitmap(classifier!!.imageSizeX, classifier!!.imageSizeY)
-      val textToShow = classifier!!.classifyFrame(bitmap)
-      bitmap.recycle()
+      val Bitmap = textureView!!.getBitmap(classifier!!.imageSizeX, classifier!!.imageSizeY)
+      val textToShow = classifier!!.classifyFrame(Bitmap)
+      Bitmap!!.recycle()
 
 
 

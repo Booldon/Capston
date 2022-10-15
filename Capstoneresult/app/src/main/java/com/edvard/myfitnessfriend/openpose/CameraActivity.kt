@@ -64,7 +64,7 @@ class CameraActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_camera)
     val thisIntent = intent
-    val typeOfExercise : String = thisIntent.getStringExtra("typeOfExercise")
+    val typeOfExercise : String = thisIntent.getStringExtra("typeOfExercise").toString()
     //Toast.makeText(this, typeOfExercise, Toast.LENGTH_SHORT).show()
     Posestimation.curExercise = typeOfExercise
     if (null == savedInstanceState) {

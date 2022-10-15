@@ -17,15 +17,15 @@ class WeekExercise : Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_week_exercise, container, false)
     }
-    override fun onResume() {
+    /* override fun onResume() {
         super.onResume()
 
-    }
+    }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val Data2 = AppStat.myStat.getWeekTimeList()
+        val data2 = AppStat.myStat.getWeekTimeList()
 
-        Chart.drawChart(linechart2, Data2,"날짜","운동시간")
+        Chart.drawChart(linechart2, data2,"날짜","운동시간")
     }
     companion object{
         private const val num = "1"

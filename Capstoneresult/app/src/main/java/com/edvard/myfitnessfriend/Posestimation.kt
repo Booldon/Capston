@@ -5,8 +5,9 @@ import java.util.ArrayList
 import android.graphics.PointF
 import android.media.MediaPlayer
 import android.os.Handler
-import android.widget.Toast
-import com.android.volley.RequestQueue
+import android.os.Looper
+// import android.widget.Toast
+// import com.android.volley.RequestQueue
 import kotlin.math.abs
 import kotlin.math.acos
 import kotlin.math.sqrt
@@ -71,12 +72,12 @@ class Posestimation {
         }
 
         fun Play_Sound(context: Context, sound:Int){
-            var Sound: MediaPlayer = MediaPlayer.create(context, sound)
+            val Sound: MediaPlayer = MediaPlayer.create(context, sound) //var -> val
             if(!isPlaying) {
                 Sound.start()
                 isPlaying = true
 
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     Sound.release()
                     isPlaying = false
                 }, Sound.duration.toLong())
@@ -164,9 +165,9 @@ class Posestimation {
             RHKAAngle = calcAngle(mDrawPoint[11], mDrawPoint[12], mDrawPoint[13])//오른쪽 무릎 각도
             LNHKAngle = calcAngle(mDrawPoint[1], mDrawPoint[8], mDrawPoint[9])//허리각도
             RNHKAngle = calcAngle(mDrawPoint[1], mDrawPoint[11], mDrawPoint[12])//허리각도
-            var LAnkleLoc = mDrawPoint[10].x
-            var RAnkleLoc = mDrawPoint[13].x
-            if( abs(RAnkleLoc - LAnkleLoc) <= 80
+            val lAnkleLoc = mDrawPoint[10].x //var -> val
+            val rAnkleLoc = mDrawPoint[13].x //var -> val
+            if( abs(rAnkleLoc - lAnkleLoc) <= 80
                     && abs(mDrawPoint[9].x - mDrawPoint[12].x) <= 80
                     && mDrawPoint[1].x.toDouble() > neckX - 30
                     && mDrawPoint[1].x.toDouble() < neckX + 30){
@@ -219,11 +220,11 @@ class Posestimation {
                     cntFlag = false
                 }
             }
-            else if(LAnkleLoc < RAnkleLoc ){
+            else if(lAnkleLoc < rAnkleLoc ){
                 //왼발을 앞으로 내민 경우
-                if(RAnkleLoc - LAnkleLoc >= 300 && !rightLunge){
+                if(rAnkleLoc - lAnkleLoc >= 300 && !rightLunge){
                     //런지 시작
-                    if(mDrawPoint[9].x < LAnkleLoc - 50){
+                    if(mDrawPoint[9].x < lAnkleLoc - 50){
                         //무릎이 발목보다 앞으로 나온경우
                         wrongKneeError_lunge = true
                     }
@@ -248,9 +249,9 @@ class Posestimation {
             }
             else{
                 //오른발을 앞으로 내민 경우
-                if(LAnkleLoc - RAnkleLoc >= 300 && !rightLunge){
+                if(lAnkleLoc - rAnkleLoc >= 300 && !rightLunge){
                     //런지 시작
-                    if(mDrawPoint[12].x < RAnkleLoc - 50){
+                    if(mDrawPoint[12].x < rAnkleLoc - 50){
                         //무릎이 발목보다 앞으로 나온경우
                         wrongKneeError_lunge = true
                     }
@@ -397,10 +398,10 @@ class Posestimation {
 
         //Total Calories Burned = Duration * 3.5 * kg * MET/200
         fun calcCalorie(exercise:String, kg:Float): Int {
-            var squartMet:Double = 7.0
-            var lungeMet:Double = 5.25
-            var crunchMet:Double = 6.8
-            var plankMet:Double = 4.8
+            val squartMet = 7.0 // val squartMet:Double = 7.0 //var -> val
+            val lungeMet = 5.25 // val lungeMet:Double = 5.25 //var -> val
+            val crunchMet = 6.8 // val crunchMet:Double = 6.8 //var -> val
+            val plankMet = 4.8// val plankMet:Double = 4.8 //var -> val
 
             when(exercise){
                 "squat"-> return ((0.66 * 3.5 * kg * squartMet)/200).toInt() // 분당 15회 10회 기준

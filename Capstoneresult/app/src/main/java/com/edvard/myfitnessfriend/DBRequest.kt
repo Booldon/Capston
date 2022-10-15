@@ -3,7 +3,7 @@ package com.edvard.myfitnessfriend
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
-import kotlinx.android.synthetic.main.activity_register.*
+// import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class DBRequest(data: HashMap<String, Any>, listener: Response.Listener<String?>?)

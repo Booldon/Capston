@@ -1,5 +1,6 @@
 package com.edvard.myfitnessfriend.page2.ui.top
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,14 +18,15 @@ class Today : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_today, container, false)
     }
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var now = LocalDate.now()
-        var strNow = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        var month:String = strNow[5].toString() + strNow[6].toString()
-        var day:String = strNow[8].toString() + strNow[9].toString()
-        var today:String = month + "월" + day + "일"
+        val now = LocalDate.now() //var -> val
+        val strNow = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) //var -> val
+        val month:String = strNow[5].toString() + strNow[6].toString() //var -> val
+        val day:String = strNow[8].toString() + strNow[9].toString() //var -> val
+        val today:String = month + "월" + day + "일" //var -> val
         date.text = today
         todayCalorie.text = AppStat.myStat.getTodayCal().toInt().toString()
 
